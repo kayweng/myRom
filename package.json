@@ -33,11 +33,14 @@
   },
   "homepage": "http://framework7.io/vue/",
   "dependencies": {
+    "axios": "^0.18.0",
+    "firebase": "^5.8.2",
     "framework7": "^3.4.0",
     "framework7-icons": "^0.9.1",
     "framework7-vue": "^3.4.0",
     "material-design-icons": "^3.0.1",
-    "vue": "^2.5.17"
+    "vue": "^2.5.17",
+    "vuex": "^3.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
@@ -67,7 +70,7 @@
     "vue-loader": "^15.4.2",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.5.17",
-    "webpack": "^4.20.0",
+    "webpack": "^4.29.0",
     "webpack-bundle-analyzer": "^3.0.2",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.9"

@@ -1,1 +1,24 @@
 /* Your app styles here */
+@font-face {
+  font-family: 'Raleway-Bold';
+  src: url('../fonts/Raleway-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.page{
+  background-color: white !important;
+}
+
+.fluid{
+  width: 100%;
+}
+
+.center{
+  text-align: center;
+}
+
+/* Navigation Bar*/
+.navbar{
+  height: 50px !important;
+}

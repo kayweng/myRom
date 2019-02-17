@@ -16,17 +16,43 @@ import AppStyles from './css/app.css';
 
 // Import App Component
 import App from './app.vue';
+import { store } from './stores/index'
+import PreLoader from './pages/components/loading.vue'
+
+const fb = require('./configs/firebaseConfig.js')
+const util = require('./scripts/util.js')
 
 // Init F7 Vue Plugin
 Framework7.use(Framework7Vue)
 
-// Init App
-new Vue({
-  el: '#app',
-  template: '<app/>',
+Vue.config.productionTip = false
 
-  // Register App Component
-  components: {
-    app: App
-  }
-});
+Vue.component('pre-loader',PreLoader)
+Vue.use(util)
+
+// Init App
+// handle page reloads
+let app
+fb.auth.onAuthStateChanged(user => {
+    if (!app) {
+        app = new Vue({
+            el: '#app',
+            template: '<app/>',
+            store,
+            components:{
+              app: App
+            }
+        })
+    }
+})
+
+
+// new Vue({
+//   el: '#app',
+//   template: '<app/>',
+
+//   // Register App Component
+//   components: {
+//     app: App
+//   }
+// });
