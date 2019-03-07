@@ -80,7 +80,6 @@
   export default {
     name: "monster-filter",
     props: {
-      allMonsters: Array,
       open: Boolean
     },
     data(){
@@ -133,9 +132,10 @@
       filterMonsterList(){
         var self = this
         var monsters = []
-        
+        var allMonster = self.$store.state.monster.monsterList
+
         //final
-        this.allMonsters.forEach(function(m){ 
+        allMonster.forEach(function(m){ 
           if(monsters.indexOf(m) > -1){
             return
           }

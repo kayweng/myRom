@@ -6,22 +6,14 @@ const api = axios.create({
   timeout: 30000
 })
 
-api.interceptors.request.use(config => {
-  //config.headers.common['Authorization'] = 'JWT ' + store.state.user.profile.accessToken
-  //return config
-})
-
 api.interceptors.response.use(null, function (error) {
-  // if (!error.response) {
-  //   console.log('axios - network error')
-  // } else {
-  //   console.log(error)
-  //   if (error.response.status === 401 || error.response.status === 403) {
-  //     store.dispatch('signOutUser')
-  //   }
-  // }
+  debugger;
+  if (!error.response) {
+    console.log('axios - network error')
+    alert(error.response)
+  }
 
-  // return Promise.reject(error)
+  return Promise.reject(error)
 })
 
 export default api

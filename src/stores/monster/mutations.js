@@ -3,7 +3,6 @@ import MonsterModel from '../../models/monsterModel';
 
 const mutations = {
   setMonstersState(state, data){
-    
     try{
       state.monsterList = []
 
@@ -16,7 +15,19 @@ const mutations = {
     }finally{
       localStorage.setItem('monsters', JSON.stringify(state.monsterList))
     }
-    
+  },
+  setMonsterUrlState(state, data){
+    try{
+      state.monsterUrl = []
+
+      if(data !== null && data.length > 0){
+        data.forEach(data => {
+          state.monsterUrl.push(data)
+        })
+      }
+    }finally{
+      localStorage.setItem('monsterUrls', JSON.stringify(state.monsterUrl))
+    }
   }
 }
 

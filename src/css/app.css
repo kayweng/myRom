@@ -18,7 +18,31 @@
   text-align: center;
 }
 
-/* Navigation Bar*/
 .navbar{
   height: 50px !important;
+}
+
+.item-title, .item-after{
+  font-size: small !important;
+}
+
+.right{
+  text-align: right !important;
+}
+
+.break-word {
+  word-wrap: break-word;
+}
+
+.truncate {
+  width: 200px;
+  min-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+
+.bold{
+  font-weight: bold;
 }

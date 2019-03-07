@@ -68,3 +68,9 @@
   font-feature-settings: "liga";
   text-align: center;
 }
+
+.item-icon{
+  width: 24px !important;
+  height: 24px !important;
+  background: transparent;
+}

@@ -13,20 +13,20 @@
     <f7-block>
       <f7-row v-for="(monster,index) in monsters" :key="index">
         <f7-col width="25">
-          <monster-card :data="monster[0]"></monster-card>
+          <monster-cell :monster="monster[0]" @detail="viewMonsterInfo"></monster-cell>
         </f7-col>
         <f7-col width="25">
-          <monster-card :data="monster[1]"></monster-card>
+          <monster-cell :monster="monster[1]" @detail="viewMonsterInfo"></monster-cell>
         </f7-col>
         <f7-col width="25">
-          <monster-card :data="monster[2]"></monster-card>
+          <monster-cell :monster="monster[2]" @detail="viewMonsterInfo"></monster-cell>
         </f7-col>
         <f7-col width="25">
-          <monster-card :data="monster[3]"></monster-card>
+          <monster-cell :monster="monster[3]" @detail="viewMonsterInfo"></monster-cell>
         </f7-col>
       </f7-row>
     </f7-block>
-    <monster-filter :open="openFilter" :allMonsters="_allData" @reset="resetMonsterList" @updated="updatedMonsterFilter"></monster-filter>
+    <monster-filter :open="openFilter"  @reset="resetMonsterList" @updated="updatedMonsterFilter"></monster-filter>
   </f7-page>
 </template>
 
@@ -43,7 +43,7 @@
 
 <script>
   import NavigationBar from '../components/navigationBar.vue'
-  import MonsterCard from './components/monster-card.vue'
+  import MonsterCell from './components/monster-cell.vue'
   import MonsterFilter from './components/monster-filter.vue'
   import MonsterMixin from '../../mixins/monsterMixin.js'
   import { mapActions } from 'vuex'
@@ -51,7 +51,7 @@
   export default {
     components:{
       [NavigationBar.name]: NavigationBar,
-      [MonsterCard.name]: MonsterCard,
+      [MonsterCell.name]: MonsterCell,
       [MonsterFilter.name]: MonsterFilter
     },
     data(){
@@ -64,18 +64,20 @@
     },
     mixins: [MonsterMixin],
     methods:{
-      ...mapActions(['retrieveMonsters']),
+      ...mapActions(['retrieveMonsters','retrieveMonsterPhotos']),
       onPageInit(){
-        this.retrieveMonsters().then(response =>{
-          var result = response
+        var self = this
 
-          if(result){
-            this._allData = result
-            this.generateRowData(result, 4)
-          }
+        self.retrieveMonsters().then(response =>{
+            var result = response
 
-          this.loadingIndicator = false
-        })
+            if(result){
+              self._allData = result
+              self.generateRowData(result, 4)
+            }
+
+            self.loadingIndicator = false
+          })
       },
       generateRowData(array, n){
         var i = 0
@@ -107,6 +109,12 @@
       updatedMonsterFilter(monster){
         this.openFilter = false
         this.generateRowData(monster, 4)
+      },
+      viewMonsterInfo(monster){
+        if(monster){
+          console.log(monster.info.name)
+          this.$f7router.navigate('/monster-info/' + monster.info.name)
+        }
       }
     }
   }

@@ -13,11 +13,13 @@ import Framework7Styles from 'framework7/css/framework7.css';
 // Import Icons and App Custom Styles
 import IconsStyles from './css/icons.css';
 import AppStyles from './css/app.css';
+import ColorStyles from './css/colors.css';
 
 // Import App Component
 import App from './app.vue';
 import { store } from './stores/index'
 import PreLoader from './pages/components/loading.vue'
+import GlobalMixin from './mixins/globalMixin.js'
 
 const fb = require('./configs/firebaseConfig.js')
 const util = require('./scripts/util.js')
@@ -29,6 +31,10 @@ Vue.config.productionTip = false
 
 Vue.component('pre-loader',PreLoader)
 Vue.use(util)
+Vue.use(IconsStyles)
+Vue.use(AppStyles)
+Vue.use(ColorStyles)
+Vue.mixin(GlobalMixin)
 
 // Init App
 // handle page reloads
@@ -45,14 +51,3 @@ fb.auth.onAuthStateChanged(user => {
         })
     }
 })
-
-
-// new Vue({
-//   el: '#app',
-//   template: '<app/>',
-
-//   // Register App Component
-//   components: {
-//     app: App
-//   }
-// });

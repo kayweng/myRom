@@ -1,0 +1,43 @@
+.water{
+  color: #1593D6;
+}
+
+.neutral{
+  color: #1A8D92; 
+}
+
+.fire{
+  color: #DB3D13;
+}
+
+.wind{
+  color: #49D987;
+}
+
+.earth{
+  color: #7D3F24;
+}
+
+.ghost{
+  color: #F063C9;
+}
+
+.holy{
+  color: #E29D3E;
+}
+
+.poison{
+  color: #6200C0;
+}
+
+.shadow{
+  color: #504174;
+}
+
+.undead{
+  color: #304EA5;
+}
+
+.link{
+  color: dodgerblue;
+}

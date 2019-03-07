@@ -3,7 +3,8 @@ import actions from './actions'
 import mutations from './mutations'
 
 const state = {
-  monsterList: [MonsterModel]
+  monsterList: [],
+  monsterUrl: []
 }
 
 export default {
